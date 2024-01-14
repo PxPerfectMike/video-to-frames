@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import Lottie from 'react-lottie';
+import PageFlip from './PageFlip';
 
 const VideoUpload = () => {
 	const [zipFileUrl, setZipFileUrl] = useState('');
@@ -27,8 +29,17 @@ const VideoUpload = () => {
 
 	const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
+	const lottieOptions = {
+		loop: true,
+		autoplay: true,
+		animationData: PageFlip, // Ensure this is the correct imported JSON data
+		rendererSettings: {
+			preserveAspectRatio: 'xMidYMid slice',
+		},
+	};
+
 	return (
-		<div>
+		<div className='main-wrapper' style={{}}>
 			<div {...getRootProps()}>
 				<input {...getInputProps()} />
 				<p>
@@ -36,11 +47,21 @@ const VideoUpload = () => {
 				</p>
 			</div>
 			<p>{uploadProgress}</p>
+
 			{zipFileUrl && (
-				<div>
-					<a href={zipFileUrl} download>
-						Download All Frames
-					</a>
+				<div style={{ display: 'flex', justifyContent: 'center' }}>
+					<div
+						className='downloadModal'
+						style={{ display: 'flex', flexDirection: 'column' }}
+					>
+						{uploadProgress && <Lottie options={lottieOptions} />}
+						<button
+							className='animated-button'
+							onclick={() => (window.location.href = zipFileUrl)}
+						>
+							Download All Frames
+						</button>
+					</div>
 				</div>
 			)}
 		</div>
