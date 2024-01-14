@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const VideoUpload = () => {
-	const [frameUrls, setFrameUrls] = useState([]);
+	const [zipFileUrl, setZipFileUrl] = useState('');
 	const [uploadProgress, setUploadProgress] = useState('');
 
 	const onDrop = useCallback((acceptedFiles) => {
@@ -17,7 +17,7 @@ const VideoUpload = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				setFrameUrls(data.frames);
+				setZipFileUrl(data.zipFile);
 				setUploadProgress('Processing complete');
 			})
 			.catch((error) => {
@@ -36,13 +36,13 @@ const VideoUpload = () => {
 				</p>
 			</div>
 			<p>{uploadProgress}</p>
-			<div>
-				{frameUrls.map((url, index) => (
-					<a key={index} href={url} download>
-						Download Frame {index + 1}
+			{zipFileUrl && (
+				<div>
+					<a href={zipFileUrl} download>
+						Download All Frames
 					</a>
-				))}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 };
