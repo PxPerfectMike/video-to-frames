@@ -32,7 +32,7 @@ const VideoUpload = () => {
 	const lottieOptions = {
 		loop: true,
 		autoplay: true,
-		animationData: PageFlip, // Ensure this is the correct imported JSON data
+		animationData: PageFlip,
 		rendererSettings: {
 			preserveAspectRatio: 'xMidYMid slice',
 		},

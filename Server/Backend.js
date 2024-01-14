@@ -5,16 +5,15 @@ import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import archiver from 'archiver'; // Import archiver
+import archiver from 'archiver';
 
-// Define __dirname in ES6 module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
 app.use(fileUpload());
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the correct path
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload', (req, res) => {
 	if (!req.files || Object.keys(req.files).length === 0) {
@@ -47,7 +46,6 @@ app.post('/upload', (req, res) => {
 				return res.status(500).send('Error processing video');
 			}
 
-			// Create a zip file of the frames
 			const zipPath = path.join(__dirname, 'public', 'frames.zip');
 			const output = fs.createWriteStream(zipPath);
 			const archive = archiver('zip', {
