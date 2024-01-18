@@ -16,6 +16,8 @@ app.use(fileUpload());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/upload', (req, res) => {
+	let fps = req.body.fps || 1;
+
 	if (!req.files || Object.keys(req.files).length === 0) {
 		return res.status(400).send('No files were uploaded.');
 	}
@@ -37,7 +39,7 @@ app.post('/upload', (req, res) => {
 			'-i',
 			uploadPath,
 			'-vf',
-			'fps=1',
+			`fps=${fps}`,
 			path.join(framesDir, 'frame_%03d.png'),
 		]);
 
