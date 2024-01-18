@@ -1,34 +1,36 @@
 {
-  "name": "video-to-frames",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "archiver": "^6.0.1",
-    "child_process": "^1.0.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "express-fileupload": "^1.4.3",
-    "lottie-react": "^2.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-dropzone": "^14.2.3",
-    "react-lottie": "^1.2.4"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
-  }
+	"name": "video-to-frames",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"full-dev": "concurrently \"npm run dev\" \"nodemon ./Server/Backend.js\"",
+		"dev": "vite",
+		"build": "vite build",
+		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"archiver": "^6.0.1",
+		"child_process": "^1.0.2",
+		"concurrently": "^8.2.2",
+		"cors": "^2.8.5",
+		"express": "^4.18.2",
+		"express-fileupload": "^1.4.3",
+		"lottie-react": "^2.4.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-dropzone": "^14.2.3",
+		"react-lottie": "^1.2.4"
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.43",
+		"@types/react-dom": "^18.2.17",
+		"@vitejs/plugin-react-swc": "^3.5.0",
+		"eslint": "^8.55.0",
+		"eslint-plugin-react": "^7.33.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.5",
+		"vite": "^5.0.8"
+	}
 }
